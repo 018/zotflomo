@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://zotflomo/locale/overlay.dtd">
+
+<overlay
+    id="zotflomo-overlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <stringbundleset>
+        <stringbundle
+            id="zotflomo-bundle"
+            src="chrome://zotflomo/locale/zotflomo.properties"/>
+    </stringbundleset>
+
+    <script type="application/x-javascript" src="chrome://zotflomo/content/zotflomo.js"/>
+
+    <popup id="zotero-itemmenu">
+        <menuseparator />
+        <menu id="zotero-itemmenu-zotflomo" label="&zotero.zotflomo.label;">
+            <menupopup id="zotero-itemmenu-zotflomo-menupopup">
+                <menuitem
+                    id="zotero-itemmenu-zotflomo-publish"
+                    label="&zotero.zotflomo.publish.label;"
+                    class="muti-select-note"
+                    oncommand="Zotero.ZotFlomo.publish()"/>
+            </menupopup>
+        </menu>
+    </popup>
+
+    <popup id="menu_ToolsPopup">
+        <menuitem id="zotero-toolspopup-zotflomo-option"
+            label="&zotero.toolspopup.zotflomo.option.label;"
+            oncommand="Zotero.ZotFlomo.option()" />
+    </popup>
+</overlay>

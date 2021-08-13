@@ -1,0 +1,9 @@
+<!ENTITY zotero.zotflomo.label "ZotFlomo">
+<!ENTITY zotero.zotflomo.publish.label "发布">
+<!ENTITY zotero.zotflomo.config.title "配置">
+<!ENTITY zotero.zotflomo.config.url.label "URL: 可以在Flomo的网页中通过「API及第三方工具」获得。">
+<!ENTITY zotero.zotflomo.config.tail.label "尾巴: 在发布成功后是否在笔记上带上发布成功的尾巴。">
+<!ENTITY zotero.zotflomo.config.tail.yes.label "是">
+<!ENTITY zotero.zotflomo.config.tail.no.label "否">
+
+<!ENTITY zotero.toolspopup.zotflomo.option.label "ZotFlomo 选项">

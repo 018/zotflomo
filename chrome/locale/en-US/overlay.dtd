@@ -1,0 +1,9 @@
+<!ENTITY zotero.zotflomo.label "ZotFlomo">
+<!ENTITY zotero.zotflomo.publish.label "Publish">
+<!ENTITY zotero.zotflomo.config.title "Conifg">
+<!ENTITY zotero.zotflomo.config.url.label "URL">
+<!ENTITY zotero.zotflomo.config.tail.label "Tail">
+<!ENTITY zotero.zotflomo.config.tail.yes.label "Yes">
+<!ENTITY zotero.zotflomo.config.tail.no.label "No">
+
+<!ENTITY zotero.toolspopup.zotflomo.option.label "ZotFlomo Option">

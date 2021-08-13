@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<!--
+/* Copyright 2021 018.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+-->
+
+<?xml-stylesheet href="chrome://zotflomo/skin/dialog.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://zotflomo/locale/overlay.dtd">
+
+<dialog
+    id="zotflomo-configdialog"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    orient="vertical"
+    buttons="accept,cancel"
+    ondialogaccept="ok();window.close();return true;"
+    ondialogcancel="window.close();return true;"
+    onload="onload()"
+    flex="1"
+    title="&zotero.zotflomo.config.title;"
+    width="400"
+    height="200">
+    
+    <script src="chrome://zotero/content/include.js"/>
+    <script src="chrome://zotflomo/content/config.js"/>
+
+    <groupbox orient="vertical">
+        <label value="&zotero.zotflomo.config.url.label;"/>
+        <textbox id="url_edt" flex="1"/>
+
+        <label value="&zotero.zotflomo.config.tail.label;"/>
+        <radiogroup id="tail_rdo" orient="horizontal" align="center" value="content">
+            <radio label="&zotero.zotflomo.config.tail.yes.label;" value="是"></radio>
+            <radio label="&zotero.zotflomo.config.tail.no.label;" value="否"></radio>
+        </radiogroup>
+    </groupbox>
+</dialog>

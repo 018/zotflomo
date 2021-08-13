@@ -1,0 +1,7 @@
+content zotflomo chrome/content/
+
+skin    zotflomo  default chrome/skin/default/
+locale  zotflomo  en-US   chrome/locale/en-US/
+locale  zotflomo  zh-CN   chrome/locale/zh-CN/
+
+overlay chrome://zotero/content/zoteroPane.xul chrome://zotflomo/content/overlay.xul
