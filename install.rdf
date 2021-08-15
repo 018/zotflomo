@@ -12,7 +12,7 @@
         RDF:about="urn:mozilla:install-manifest"
         em:id="zotflomo@uread.today"
         em:name="ZotFlomo"
-        em:version="1.0.0"
+        em:version="1.0.1"
         em:type="2"
         em:iconURL="chrome://zotflomo/skin/zotflomo.png"
         em:icon64URL="chrome://zotflomo/skin/zotflomo64.png"

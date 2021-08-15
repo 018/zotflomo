@@ -11,7 +11,7 @@ Components.utils.import('resource://gre/modules/Services.jsm');
 
 function onload () {
   let url = Zotero.Prefs.get('zotflomo.url')
-  document.getElementById('url_edt').value = url
+  document.getElementById('url_edt').value = url || ''
   let tail = Zotero.Prefs.get('zotflomo.tail')
   document.getElementById('tail_rdo').value = (tail === undefined || tail ? '是' : '否')
   Zotero.debug(`zotflomo@url: ${url}, tail: ${tail}`)

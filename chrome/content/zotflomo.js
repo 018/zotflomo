@@ -69,21 +69,43 @@ zotflomo.publish = function () {
       `${zitem.getNoteTitle()} 提交中 ...`
     )
     itemProgress.setProgress(50)
-    let note = zitem.getNote()
+    let note = zitem.getNote().replace(/^<h3>## /g, '<h3>#').replace(/<hr \/>\n*<p style="color: #808080;">于 \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} 发布到 <a href="https:\/\/flomoapp.com\/mine\/\?memo_id=.*">Flomo<\/a> 。\<\/p>/g, '')
     Zotero.debug('zotflomo@url: ' + url)
-    Zotero.HTTP.doPost(url, `{
-      "content": "${this.htmlToText(note).replace('"', '\\"').replace('## ', '#').replace(/\n\n/g, '\\n').replace(/\n/g, '\\n')}"
-    }`, function (request) {
+    let start = note.indexOf('<p>- <strong>标签</strong>：')
+    if (start > -1) {
+      let startContent = note.substr(0, start)
+      let end = note.indexOf('\n', start)
+      let content, endContent
+      if (end > start) {
+        content = note.substr(start, end - start)
+        endContent = note.substr(end)
+      } else {
+        content = note.substr(start)
+        endContent = ''
+      }
+      note = startContent + content.replace(/\[(.*?)\]/g, '#$1') + endContent
+    }
+    let body = {
+      content: this.htmlToText(note).replace(/"/g, '\\"').replace(/## */g, '#').replace(/\n\n/g, '\n').replace(/\r\n\r\n/g, '\r\n')
+    }
+    Zotero.debug('zotflomo@body: ' + JSON.stringify(body))
+    Zotero.HTTP.doPost(url, JSON.stringify(body), function (request) {
       if (request.status === 200) {
         let json = JSON.parse(request.responseText)
         if (json.code === 0) {
-          if (tail) {
-            zitem.setNote(note + `<hr /><p style="color: #808080;">于 ${json.memo.created_at} 发布到 <a href="https://flomoapp.com/mine/?memo_id=${json.memo.slug}">Flomo</a> 。</p>`);
-            zitem.saveTx()
+          if (json.memo.content === '<p></p>') {
+            itemProgress.setIcon(`chrome://zotero/skin/cross${Zotero.hiDPISuffix}.png`)
+            itemProgress.setText(`${zitem.getNoteTitle()} 发布异常，内容空白，请删除并重试。`)
+            itemProgress.setProgress(100)
+          } else {
+            if (tail) {
+              zitem.setNote(zitem.getNote() + `<hr /><p style="color: #808080;">于 ${json.memo.created_at} 发布到 <a href="https://flomoapp.com/mine/?memo_id=${json.memo.slug}">Flomo</a> 。</p>`);
+              zitem.saveTx()
+            }
+            itemProgress.setIcon(`chrome://zotero/skin/tick${Zotero.hiDPISuffix}.png`)
+            itemProgress.setText(`${zitem.getNoteTitle()} 发布成功。`)
+            itemProgress.setProgress(100)
           }
-          itemProgress.setIcon(`chrome://zotero/skin/tick${Zotero.hiDPISuffix}.png`)
-          itemProgress.setText(`${zitem.getNoteTitle()} 发布成功。`)
-          itemProgress.setProgress(100)
         } else {
           itemProgress.setIcon(`chrome://zotero/skin/cross${Zotero.hiDPISuffix}.png`)
           itemProgress.setText(`${zitem.getNoteTitle()}：${json.message}`)
