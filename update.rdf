@@ -5,13 +5,13 @@
       <rdf:Seq>
         <rdf:li>
           <rdf:Description>
-            <em:version>1.0.1</em:version>
+            <em:version>2.0.0</em:version>
             <em:targetApplication>
               <rdf:Description>
                 <em:id>zotero@chnm.gmu.edu</em:id>
                 <em:minVersion>5.0</em:minVersion>
-                <em:maxVersion>5.*</em:maxVersion>
-                <em:updateLink>https://github.com/018/zotflomo/releases/download/v1.0.1/zotflomo-1.0.1.xpi</em:updateLink>
+                <em:maxVersion>*</em:maxVersion>
+                <em:updateLink>https://github.com/018/zotflomo/releases/download/v2.0/zotflomo-2.0.0.xpi</em:updateLink>
               </rdf:Description>
             </em:targetApplication>
           </rdf:Description>
